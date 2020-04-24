@@ -28,9 +28,15 @@ namespace WatsonSyslog
 
                     receivedBytes = _ListenerUdp.Receive(ref endpoint);
                     receivedData = Encoding.ASCII.GetString(receivedBytes, 0, receivedBytes.Length);
+                    //var data2 = Encoding.UTF8.GetString(receivedBytes, 0, receivedBytes.Length);
+                    //var data3 = Encoding.Unicode.GetString(receivedBytes, 0, receivedBytes.Length);
+                    //var data4 = Encoding.UTF7.GetString(receivedBytes, 0, receivedBytes.Length);
+                    //var data5 = Encoding.UTF32.GetString(receivedBytes, 0, receivedBytes.Length);
                     string msg = null;
                     if (_Settings.DisplayTimestamps) msg = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + " ";
                     msg += receivedData;
+                    //Console.WriteLine($"[ASCII]:{receivedData}, [UTF8]:{data2}, [Unicode]:{data3}, [UTF7]:{data4}, [UTF32]:{data5}, [Length]:{receivedBytes.Length}");
+
                     Console.WriteLine(msg);
                     
                     #endregion
